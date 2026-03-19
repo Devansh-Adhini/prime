@@ -1,0 +1,12 @@
+2026-03-19 13:18:11,742 [INFO] Fetched public price 69997.0 for BTCUSDT
+2026-03-19 13:18:21,857 [INFO] Fetched public price 69989.2 for BTCUSDT
+2026-03-19 13:18:22,136 [INFO] Fetched public price 69989.2 for BTCUSDT
+2026-03-19 13:18:31,708 [INFO] Fetched public price 69993.8 for BTCUSDT
+2026-03-19 13:18:41,764 [INFO] Fetched public price 69993.6 for BTCUSDT
+2026-03-19 13:18:51,764 [INFO] Fetched public price 69992.1 for BTCUSDT
+2026-03-19 13:19:01,810 [INFO] Fetched public price 69997.1 for BTCUSDT
+2026-03-19 13:19:12,154 [INFO] Fetched public price 69997.0 for BTCUSDT
+2026-03-19 13:19:21,861 [INFO] Fetched public price 69992.1 for BTCUSDT
+2026-03-19 13:19:22,392 [INFO] Fetched public price 69995.0 for BTCUSDT
+2026-03-19 16:18:46,393 [ERROR] Error fetching open orders: HTTPSConnectionPool(host='testnet.binancefuture.com', port=443): Max retries exceeded with url: /fapi/v1/openOrders?symbol=BTCUSDT&timestamp=1773917326389&signature=0ff8d8eaf271cf8e4575539c0d41d50f1e65673ddc06e38b2d9973e7e1579a8c (Caused by NameResolutionError("HTTPSConnection(host='testnet.binancefuture.com', port=443): Failed to resolve 'testnet.binancefuture.com' ([Errno 11001] getaddrinfo failed)"))
+2026-03-19 16:18:46,394 [ERROR] Error fetching positions: HTTPSConnectionPool(host='testnet.binancefuture.com', port=443): Max retries exceeded with url: /fapi/v2/positionRisk?timestamp=1773917326391&signature=013563dab8f28a4cbb1514498d61f3e84078aa1a10dba0141a3d591783dcf1a7 (Caused by NameResolutionError("HTTPSConnection(host='testnet.binancefuture.com', port=443): Failed to resolve 'testnet.binancefuture.com' ([Errno 11001] getaddrinfo failed)"))

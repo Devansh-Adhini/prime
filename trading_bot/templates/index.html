@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Bot (Testnet)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#121212',
+                        surface: '#1E1E1E',
+                        accent: '#F0B90B',
+                        accentHover: '#E0A800',
+                        field: '#333333',
+                        text: '#FFFFFF',
+                        buy: '#00C853',
+                        sell: '#F44336'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #121212; color: #FFFFFF; }
+        .log-box { font-family: 'Consolas', monospace; }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-bg text-text min-h-screen p-6">
+    <div class="max-w-5xl mx-auto space-y-6">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-surface p-4 rounded-xl shadow-lg border border-gray-800">
+            <div>
+                <h1 class="text-3xl font-bold text-accent">Trading Bot <span class="text-sm font-normal text-gray-400">Futures Testnet</span></h1>
+            </div>
+            {% if mock_mode %}
+            <div class="bg-yellow-900 border border-yellow-700 text-yellow-300 px-3 py-1 rounded text-sm font-semibold uppercase">
+                MOCK MODE
+            </div>
+            {% endif %}
+        </header>
+
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Left Column: Form -->
+            <div class="md:col-span-2 bg-surface p-6 rounded-xl shadow-lg border border-gray-800 space-y-6">
+                <!-- Market Info -->
+                <div class="flex justify-between items-center bg-field p-4 rounded-lg">
+                    <div class="flex items-center space-x-4">
+                        <label class="text-gray-400 font-semibold uppercase text-sm">Symbol</label>
+                        <select id="symbol" class="bg-surface text-accent font-bold px-3 py-1 rounded border border-gray-700 focus:outline-none focus:border-accent" onchange="onSymbolChange()">
+                            <option value="BTCUSDT">BTCUSDT</option>
+                            <option value="ETHUSDT">ETHUSDT</option>
+                            <option value="BNBUSDT">BNBUSDT</option>
+                            <option value="ADAUSDT">ADAUSDT</option>
+                            <option value="DOGEUSDT">DOGEUSDT</option>
+                            <option value="CUSTOM">Custom...</option>
+                        </select>
+                        <input type="text" id="custom-symbol" class="hidden bg-surface text-accent font-bold px-3 py-1 rounded border border-gray-700 focus:outline-none w-28 uppercase" placeholder="Symbol">
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-gray-400 uppercase">Live Price</div>
+                        <div id="price-display" class="text-xl font-bold text-accent">- USDT</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-gray-400 uppercase">Balance</div>
+                        <div id="balance-display" class="font-bold text-gray-200">- USDT</div>
+                    </div>
+                </div>
+
+                <!-- Order Type & Side -->
+                <div class="grid grid-cols-2 gap-4 border-t border-gray-700 pt-6">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2 uppercase tracking-wide">Order Type</label>
+                        <div class="flex space-x-2">
+                            <button class="order-type-btn flex-1 py-2 rounded font-semibold bg-accent text-black transition-colors" data-type="MARKET">Market</button>
+                            <button class="order-type-btn flex-1 py-2 rounded font-semibold bg-field text-gray-300 hover:bg-gray-700 transition-colors" data-type="LIMIT">Limit</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2 uppercase tracking-wide">Side</label>
+                        <div class="flex space-x-2">
+                            <button class="side-btn flex-1 py-2 rounded font-semibold bg-buy text-white transition-opacity" data-side="BUY">Buy</button>
+                            <button class="side-btn flex-1 py-2 rounded font-semibold bg-field text-gray-300 opacity-50 hover:opacity-100 transition-opacity" data-side="SELL">Sell</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inputs -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2 uppercase tracking-wide">Quantity (Coins)</label>
+                        <input type="number" id="qty" step="0.001" placeholder="0.00" class="w-full bg-field border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-accent transition-colors">
+                    </div>
+                    
+                    <div id="price-container" class="hidden">
+                        <label class="block text-sm text-gray-400 mb-2 uppercase tracking-wide">Limit Price (USDT)</label>
+                        <input type="number" id="limit-price" step="0.1" placeholder="0.00" class="w-full bg-field border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-accent transition-colors">
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button onclick="placeOrder()" class="w-full bg-accent hover:bg-accentHover text-black font-bold py-4 rounded-xl text-lg transition-transform transform hover:scale-[1.01] active:scale-[0.99] shadow-lg">
+                    Place Order
+                </button>
+            </div>
+
+            <!-- Right Column: Logs -->
+            <div class="bg-surface p-4 rounded-xl shadow-lg border border-gray-800 flex flex-col h-full">
+                <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 border-b border-gray-700 pb-2">Activity Log</h2>
+                <div id="log" class="log-box flex-1 bg-field p-3 rounded overflow-y-auto text-xs space-y-2 h-96">
+                    <!-- Logs go here -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Active Positions Panel -->
+        <div class="bg-surface p-6 rounded-xl shadow-lg border border-gray-800 mt-6">
+            <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
+                <h2 class="text-lg font-bold text-accent uppercase tracking-wider">Active Positions (<span id="positions-count">0</span>)</h2>
+                <button onclick="fetchPositions()" class="text-sm bg-field hover:bg-gray-700 px-3 py-1 rounded text-white transition-colors">Refresh</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="text-gray-400 uppercase tracking-wider border-b border-gray-700">
+                            <th class="py-2">Symbol</th>
+                            <th class="py-2">Size</th>
+                            <th class="py-2">Entry Price</th>
+                            <th class="py-2">Mark Price</th>
+                            <th class="py-2">Liq Price</th>
+                            <th class="py-2">uPnL</th>
+                            <th class="py-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="positions-body">
+                        <tr>
+                            <td colspan="7" class="text-center py-4 text-gray-500">Loading positions...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Open Orders Panel -->
+        <div class="bg-surface p-6 rounded-xl shadow-lg border border-gray-800 mt-6">
+            <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
+                <h2 class="text-lg font-bold text-accent uppercase tracking-wider">Open Orders (<span id="open-orders-count">0</span>)</h2>
+                <button onclick="fetchOpenOrders()" class="text-sm bg-field hover:bg-gray-700 px-3 py-1 rounded text-white transition-colors">Refresh</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="text-gray-400 uppercase tracking-wider border-b border-gray-700">
+                            <th class="py-2">Symbol</th>
+                            <th class="py-2">Order ID</th>
+                            <th class="py-2">Side</th>
+                            <th class="py-2">Type</th>
+                            <th class="py-2">Price</th>
+                            <th class="py-2">Quantity</th>
+                            <th class="py-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="open-orders-body">
+                        <tr>
+                            <td colspan="7" class="text-center py-4 text-gray-500">Loading open orders...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentOrderType = 'MARKET';
+        let currentSide = 'BUY';
+        let priceWs = null;
+        let userDataWs = null;
+
+        const logBox = document.getElementById('log');
+        const priceContainer = document.getElementById('price-container');
+        const symbolSelect = document.getElementById('symbol');
+        const customSymbol = document.getElementById('custom-symbol');
+        const openOrdersBody = document.getElementById('open-orders-body');
+        const openOrdersCount = document.getElementById('open-orders-count');
+        const positionsBody = document.getElementById('positions-body');
+        const positionsCount = document.getElementById('positions-count');
+
+        function logMessage(msg, type = 'info') {
+            const time = new Date().toLocaleTimeString();
+            const el = document.createElement('div');
+            el.innerHTML = `<span class="text-gray-500">[${time}]</span> <span class="${type === 'error' ? 'text-red-400' : type === 'success' ? 'text-green-400' : 'text-gray-300'}">${msg}</span>`;
+            logBox.appendChild(el);
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        document.querySelectorAll('.order-type-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.order-type-btn').forEach(b => {
+                    b.classList.replace('bg-accent', 'bg-field');
+                    b.classList.replace('text-black', 'text-gray-300');
+                });
+                const target = e.target;
+                target.classList.replace('bg-field', 'bg-accent');
+                target.classList.replace('text-gray-300', 'text-black');
+                
+                currentOrderType = target.dataset.type;
+                if (currentOrderType === 'LIMIT') {
+                    priceContainer.classList.remove('hidden');
+                } else {
+                    priceContainer.classList.add('hidden');
+                }
+                logMessage(`Order type set to ${currentOrderType}`);
+            });
+        });
+
+        document.querySelectorAll('.side-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.side-btn').forEach(b => {
+                    b.classList.replace('bg-buy', 'bg-field');
+                    b.classList.replace('bg-sell', 'bg-field');
+                    b.classList.replace('text-white', 'text-gray-300');
+                    b.classList.add('opacity-50');
+                });
+                const target = e.target;
+                currentSide = target.dataset.side;
+                target.classList.remove('opacity-50', 'bg-field', 'text-gray-300');
+                if (currentSide === 'BUY') {
+                    target.classList.add('bg-buy', 'text-white');
+                } else {
+                    target.classList.add('bg-sell', 'text-white');
+                }
+                logMessage(`Side set to ${currentSide}`);
+            });
+        });
+
+        function getActiveSymbol() {
+            return symbolSelect.value === 'CUSTOM' ? customSymbol.value.toUpperCase() : symbolSelect.value;
+        }
+
+        function onSymbolChange() {
+            if (symbolSelect.value === 'CUSTOM') {
+                customSymbol.classList.remove('hidden');
+                customSymbol.focus();
+            } else {
+                customSymbol.classList.add('hidden');
+            }
+            connectWebSocket();
+            fetchBackendData(); // update balance and orders
+        }
+
+        // Live Price via WebSocket
+        function connectWebSocket() {
+            if (priceWs) {
+                priceWs.close();
+            }
+            const sym = getActiveSymbol().toLowerCase();
+            if(!sym) return;
+
+            priceWs = new WebSocket(`wss://stream.binancefuture.com/ws/${sym}@markPrice`);
+            
+            priceWs.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                if (data.p) {
+                    const price = parseFloat(data.p).toFixed(4);
+                    document.getElementById('price-display').innerText = `${price} USDT`;
+                }
+            };
+
+            priceWs.onerror = (err) => {
+                logMessage('WebSocket (Price) error.', 'error');
+            };
+        }
+
+        async function connectUserDataStream() {
+            try {
+                const res = await fetch('/api/listen_key');
+                const data = await res.json();
+                if(data.status === 'success' && data.listenKey) {
+                    if (userDataWs) {
+                        userDataWs.close();
+                    }
+                    userDataWs = new WebSocket(`wss://stream.binancefuture.com/ws/${data.listenKey}`);
+                    
+                    userDataWs.onopen = () => {
+                        logMessage("Connected to Secure User Data Stream.", "success");
+                    };
+
+                    userDataWs.onmessage = (event) => {
+                        const parsed = JSON.parse(event.data);
+                        // Respond to Account Updates (Balance/Positions) or Order Updates
+                        if (parsed.e === 'ACCOUNT_UPDATE' || parsed.e === 'ORDER_TRADE_UPDATE') {
+                            fetchBackendData();
+                        }
+                    };
+
+                    userDataWs.onerror = (err) => {
+                        logMessage('WebSocket (User Data) error.', 'error');
+                    };
+                }
+            } catch (err) {
+                console.error("Failed to acquire listen key: ", err);
+            }
+        }
+
+        // Fetch Balance and Trigger Open Orders
+        async function fetchBackendData() {
+            const sym = getActiveSymbol();
+            if(!sym) return;
+            try {
+                const res = await fetch(`/api/market_data?symbol=${sym}`);
+                const data = await res.json();
+                document.getElementById('balance-display').innerText = `${data.balance.toFixed(2)} USDT`;
+                // Intentionally omitted repeating price log here since websocket handles price.
+            } catch (err) {
+                console.error(err);
+            }
+            fetchOpenOrders();
+            fetchPositions();
+        }
+
+        // Open Orders Fetching
+        async function fetchOpenOrders() {
+            const sym = getActiveSymbol();
+            try {
+                const res = await fetch(`/api/open_orders?symbol=${sym}`);
+                const result = await res.json();
+                
+                openOrdersBody.innerHTML = '';
+                
+                if (result.status === "success" && result.data.length > 0) {
+                    openOrdersCount.innerText = result.data.length;
+                    result.data.forEach(order => {
+                        const tr = document.createElement('tr');
+                        tr.className = "border-b border-gray-800 hover:bg-field transition-colors";
+                        
+                        const sideColor = order.side === 'BUY' ? 'text-green-400' : 'text-red-400';
+                        
+                        tr.innerHTML = `
+                            <td class="py-3 px-2 font-bold">${order.symbol}</td>
+                            <td class="py-3 px-2 font-mono text-gray-400">${order.orderId}</td>
+                            <td class="py-3 px-2 font-bold ${sideColor}">${order.side}</td>
+                            <td class="py-3 px-2">${order.type}</td>
+                            <td class="py-3 px-2">${parseFloat(order.price).toFixed(2)}</td>
+                            <td class="py-3 px-2">${parseFloat(order.origQty)}</td>
+                            <td class="py-3 px-2">
+                                <button onclick="cancelOrder('${order.symbol}', ${order.orderId})" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1 rounded font-bold transition-colors shadow">
+                                    Cancel
+                                </button>
+                            </td>
+                        `;
+                        openOrdersBody.appendChild(tr);
+                    });
+                } else if (result.data.length === 0) {
+                    openOrdersCount.innerText = "0";
+                    openOrdersBody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-gray-500">No open orders found for ${sym}.</td></tr>`;
+                } else {
+                    openOrdersCount.innerText = "0";
+                    openOrdersBody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-red-500">Failed to load open orders safely.</td></tr>`;
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function cancelOrder(symbol, orderId) {
+            logMessage(`Requesting cancellation for order ${orderId}...`);
+            try {
+                const res = await fetch('/api/cancel_order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ symbol: symbol, orderId: orderId })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    logMessage(`Order ${orderId} Canceled Successfully!`, 'success');
+                    fetchOpenOrders(); // Refresh table
+                    fetchBackendData(); // Refresh balance
+                } else {
+                    logMessage(`Cancel Failed: ${data.message}`, 'error');
+                }
+            } catch (err) {
+                logMessage(`Network Error: ${err}`, 'error');
+            }
+        }
+
+        // Positions Fetching
+        async function fetchPositions() {
+            const sym = getActiveSymbol();
+            try {
+                const res = await fetch(`/api/positions?symbol=${sym}`);
+                const result = await res.json();
+                
+                positionsBody.innerHTML = '';
+                
+                if (result.status === "success" && result.data.length > 0) {
+                    positionsCount.innerText = result.data.length;
+                    result.data.forEach(pos => {
+                        const tr = document.createElement('tr');
+                        tr.className = "border-b border-gray-800 hover:bg-field transition-colors";
+                        
+                        const amt = parseFloat(pos.positionAmt);
+                        const sideColor = amt > 0 ? 'text-green-400' : 'text-red-400';
+                        const pnlColor = parseFloat(pos.unRealizedProfit) >= 0 ? 'text-green-400' : 'text-red-400';
+                        
+                        tr.innerHTML = `
+                            <td class="py-3 px-2 font-bold">${pos.symbol}</td>
+                            <td class="py-3 px-2 font-bold ${sideColor}">${amt}</td>
+                            <td class="py-3 px-2">${parseFloat(pos.entryPrice).toFixed(4)}</td>
+                            <td class="py-3 px-2">${parseFloat(pos.markPrice).toFixed(4)}</td>
+                            <td class="py-3 px-2">${parseFloat(pos.liquidationPrice).toFixed(4)}</td>
+                            <td class="py-3 px-2 font-bold ${pnlColor}">${parseFloat(pos.unRealizedProfit).toFixed(4)} USDT</td>
+                            <td class="py-3 px-2">
+                                <button onclick="closePosition('${pos.symbol}')" class="bg-accent hover:bg-accentHover text-black text-xs px-3 py-1 rounded font-bold transition-colors shadow">
+                                    Close
+                                </button>
+                            </td>
+                        `;
+                        positionsBody.appendChild(tr);
+                    });
+                } else if (result.data && result.data.length === 0) {
+                    positionsCount.innerText = "0";
+                    positionsBody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-gray-500">No active positions for ${sym}.</td></tr>`;
+                } else {
+                    positionsCount.innerText = "0";
+                    positionsBody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-red-500">Failed to load positions.</td></tr>`;
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function closePosition(symbol) {
+            logMessage(`Requesting Close for position on ${symbol}...`);
+            try {
+                const res = await fetch('/api/close_position', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ symbol: symbol })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    logMessage(`Position Closed Successfully!`, 'success');
+                    fetchBackendData(); // Refresh everything
+                } else {
+                    logMessage(`Close Failed: ${data.message}`, 'error');
+                }
+            } catch (err) {
+                logMessage(`Network Error: ${err}`, 'error');
+            }
+        }
+
+        async function placeOrder() {
+            const sym = getActiveSymbol();
+            const qty = document.getElementById('qty').value;
+            const price = document.getElementById('limit-price').value;
+
+            if(!sym || !qty) {
+                logMessage("Please fill in symbol and quantity.", "error");
+                return;
+            }
+
+            const payload = {
+                symbol: sym,
+                side: currentSide,
+                order_type: currentOrderType,
+                quantity: qty,
+                price: currentOrderType === 'LIMIT' ? price : null
+            };
+
+            logMessage(`Sending ${currentSide} ${currentOrderType} for ${qty} ${sym}...`);
+
+            try {
+                const res = await fetch('/api/place_order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    logMessage(`Order Placed Successfully! ID: ${data.data.orderId}`, 'success');
+                    fetchBackendData(); // Refresh balance and Open Orders
+                } else {
+                    logMessage(`Order Failed: ${data.message}`, 'error');
+                }
+            } catch (err) {
+                logMessage(`Network Error: ${err}`, 'error');
+            }
+        }
+
+        // Init
+        connectWebSocket();
+        connectUserDataStream();
+        fetchBackendData();
+        // Removed setInterval to stop polling log spam, now completely event-driven via User Data Stream!
+    </script>
+</body>
+</html>

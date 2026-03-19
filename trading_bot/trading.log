@@ -1,0 +1,557 @@
+2026-03-19 10:20:27,287 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:20:27,287 [WARNING] BINANCE_API_KEY or BINANCE_API_SECRET not found in environment. Defaulting to MOCK mode.
+2026-03-19 10:20:27,887 [INFO] Binance Client initialized. MOCK mode: True
+2026-03-19 10:20:27,887 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01}
+2026-03-19 10:20:27,887 [ERROR] Unexpected Error: API Secret required for private endpoints
+Traceback (most recent call last):
+  File "D:\prime\trading_bot\bot\orders.py", line 108, in place_order
+    order = client.futures_create_order(**params)
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 6504, in futures_create_order
+    return self._request_futures_api('post', 'order', True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 383, in _request_futures_api
+    return self._request(method, uri, signed, True, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 356, in _request
+    kwargs = self._get_request_kwargs(method, signed, force_params, **kwargs)
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 313, in _get_request_kwargs
+    kwargs['data']['signature'] = self._generate_signature(kwargs['data'])
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 268, in _generate_signature
+    return sig_func(query_string)
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 259, in _hmac_signature
+    assert self.API_SECRET, "API Secret required for private endpoints"
+           ^^^^^^^^^^^^^^^
+AssertionError: API Secret required for private endpoints
+2026-03-19 10:20:27,892 [INFO] Requesting order placement: {'symbol': 'ETHUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.05, 'price': 3500.0, 'timeInForce': 'GTC'}
+2026-03-19 10:20:27,892 [ERROR] Unexpected Error: API Secret required for private endpoints
+Traceback (most recent call last):
+  File "D:\prime\trading_bot\bot\orders.py", line 108, in place_order
+    order = client.futures_create_order(**params)
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 6504, in futures_create_order
+    return self._request_futures_api('post', 'order', True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 383, in _request_futures_api
+    return self._request(method, uri, signed, True, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 356, in _request
+    kwargs = self._get_request_kwargs(method, signed, force_params, **kwargs)
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 313, in _get_request_kwargs
+    kwargs['data']['signature'] = self._generate_signature(kwargs['data'])
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 268, in _generate_signature
+    return sig_func(query_string)
+  File "C:\Users\Devansh\AppData\Roaming\Python\Python314\site-packages\binance\client.py", line 259, in _hmac_signature
+    assert self.API_SECRET, "API Secret required for private endpoints"
+           ^^^^^^^^^^^^^^^
+AssertionError: API Secret required for private endpoints
+2026-03-19 10:21:15,912 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:21:15,913 [WARNING] BINANCE_API_KEY or BINANCE_API_SECRET not found in environment. Defaulting to MOCK mode.
+2026-03-19 10:21:16,551 [INFO] Binance Client initialized. MOCK mode: True
+2026-03-19 10:21:16,552 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01}
+2026-03-19 10:21:16,552 [INFO] MOCK mode: Order successfully placed. Response: {'orderId': 32737684, 'symbol': 'BTCUSDT', 'status': 'FILLED', 'clientOrderId': 'mock_32737684', 'price': '0', 'avgPrice': '50000.0', 'origQty': '0.01', 'executedQty': '0.01', 'cumQuote': '0', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'updateTime': 1700000000000}
+2026-03-19 10:21:16,553 [INFO] Requesting order placement: {'symbol': 'ETHUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.05, 'price': 3500.0, 'timeInForce': 'GTC'}
+2026-03-19 10:21:16,553 [INFO] MOCK mode: Order successfully placed. Response: {'orderId': 50950441, 'symbol': 'ETHUSDT', 'status': 'NEW', 'clientOrderId': 'mock_50950441', 'price': '3500.0', 'avgPrice': '3500.0', 'origQty': '0.05', 'executedQty': '0', 'cumQuote': '0', 'timeInForce': 'GTC', 'type': 'LIMIT', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'LIMIT', 'updateTime': 1700000000000}
+2026-03-19 10:36:37,138 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:36:37,138 [WARNING] BINANCE_API_KEY or BINANCE_API_SECRET not found in environment. Defaulting to MOCK mode.
+2026-03-19 10:36:37,732 [INFO] Binance Client initialized. MOCK mode: True
+2026-03-19 10:36:37,819 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-19 10:36:37,819 [INFO] [33mPress CTRL+C to quit[0m
+2026-03-19 10:36:37,821 [INFO]  * Restarting with stat
+2026-03-19 10:36:38,600 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:36:38,600 [WARNING] BINANCE_API_KEY or BINANCE_API_SECRET not found in environment. Defaulting to MOCK mode.
+2026-03-19 10:36:39,166 [INFO] Binance Client initialized. MOCK mode: True
+2026-03-19 10:36:39,201 [WARNING]  * Debugger is active!
+2026-03-19 10:36:39,204 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 10:36:41,251 [INFO] 127.0.0.1 - - [19/Mar/2026 10:36:41] "GET / HTTP/1.1" 200 -
+2026-03-19 10:36:41,774 [INFO] 127.0.0.1 - - [19/Mar/2026 10:36:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-19 10:36:42,552 [INFO] Fetched public price 70810.5 for BTCUSDT
+2026-03-19 10:36:42,554 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:36:42,554 [INFO] 127.0.0.1 - - [19/Mar/2026 10:36:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:36:52,463 [INFO] Fetched public price 70810.4 for BTCUSDT
+2026-03-19 10:36:52,464 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:36:52,464 [INFO] 127.0.0.1 - - [19/Mar/2026 10:36:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:37:02,367 [INFO] Fetched public price 70810.3 for BTCUSDT
+2026-03-19 10:37:02,369 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:37:02,369 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:02] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:37:07,678 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'MARKET', 'quantity': 10000.0}
+2026-03-19 10:37:07,679 [INFO] MOCK mode: Order successfully placed. Response: {'orderId': 85384817, 'symbol': 'BTCUSDT', 'status': 'FILLED', 'clientOrderId': 'mock_85384817', 'price': '0', 'avgPrice': '50000.0', 'origQty': '10000.0', 'executedQty': '10000.0', 'cumQuote': '0', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'updateTime': 1700000000000}
+2026-03-19 10:37:07,679 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:07] "POST /api/place_order HTTP/1.1" 200 -
+2026-03-19 10:37:08,262 [INFO] Fetched public price 70802.7 for BTCUSDT
+2026-03-19 10:37:08,264 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:37:08,264 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:08] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:37:12,378 [INFO] Fetched public price 70802.7 for BTCUSDT
+2026-03-19 10:37:12,380 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:37:12,380 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:37:22,291 [INFO] Fetched public price 70802.7 for BTCUSDT
+2026-03-19 10:37:22,292 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:37:22,293 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:37:32,310 [INFO] Fetched public price 70802.7 for BTCUSDT
+2026-03-19 10:37:32,312 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:37:32,312 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:37:42,272 [INFO] Fetched public price 70802.6 for BTCUSDT
+2026-03-19 10:37:42,273 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:37:42,274 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:37:52,363 [INFO] Fetched public price 70810.4 for BTCUSDT
+2026-03-19 10:37:52,365 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:37:52,365 [INFO] 127.0.0.1 - - [19/Mar/2026 10:37:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:38:02,381 [INFO] Fetched public price 70800.1 for BTCUSDT
+2026-03-19 10:38:02,382 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:38:02,382 [INFO] 127.0.0.1 - - [19/Mar/2026 10:38:02] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:38:12,612 [INFO] Fetched public price 70800.1 for BTCUSDT
+2026-03-19 10:38:12,613 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:38:12,613 [INFO] 127.0.0.1 - - [19/Mar/2026 10:38:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:38:22,342 [INFO] Fetched public price 70801.1 for BTCUSDT
+2026-03-19 10:38:22,345 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:38:22,345 [INFO] 127.0.0.1 - - [19/Mar/2026 10:38:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:38:32,401 [INFO] Fetched public price 70811.1 for BTCUSDT
+2026-03-19 10:38:32,403 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:38:32,403 [INFO] 127.0.0.1 - - [19/Mar/2026 10:38:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:38:42,321 [INFO] Fetched public price 70812.2 for BTCUSDT
+2026-03-19 10:38:42,322 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:38:42,323 [INFO] 127.0.0.1 - - [19/Mar/2026 10:38:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:38:52,373 [INFO] Fetched public price 70823.4 for BTCUSDT
+2026-03-19 10:38:52,375 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:38:52,375 [INFO] 127.0.0.1 - - [19/Mar/2026 10:38:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:39:02,364 [INFO] Fetched public price 70823.6 for BTCUSDT
+2026-03-19 10:39:02,366 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:39:02,366 [INFO] 127.0.0.1 - - [19/Mar/2026 10:39:02] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:39:12,361 [INFO] Fetched public price 70823.6 for BTCUSDT
+2026-03-19 10:39:12,362 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:39:12,363 [INFO] 127.0.0.1 - - [19/Mar/2026 10:39:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:39:22,531 [INFO] Fetched public price 70826.2 for BTCUSDT
+2026-03-19 10:39:22,533 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:39:22,533 [INFO] 127.0.0.1 - - [19/Mar/2026 10:39:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:39:32,566 [INFO] Fetched public price 70824.9 for BTCUSDT
+2026-03-19 10:39:32,567 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:39:32,568 [INFO] 127.0.0.1 - - [19/Mar/2026 10:39:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:39:42,564 [INFO] Fetched public price 70821.7 for BTCUSDT
+2026-03-19 10:39:42,565 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:39:42,565 [INFO] 127.0.0.1 - - [19/Mar/2026 10:39:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:39:52,577 [INFO] Fetched public price 70821.4 for BTCUSDT
+2026-03-19 10:39:52,578 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:39:52,579 [INFO] 127.0.0.1 - - [19/Mar/2026 10:39:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:40:02,586 [INFO] Fetched public price 70801.0 for BTCUSDT
+2026-03-19 10:40:02,588 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:40:02,588 [INFO] 127.0.0.1 - - [19/Mar/2026 10:40:02] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:40:12,632 [INFO] Fetched public price 70801.0 for BTCUSDT
+2026-03-19 10:40:12,634 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:40:12,635 [INFO] 127.0.0.1 - - [19/Mar/2026 10:40:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:40:22,575 [INFO] Fetched public price 70819.1 for BTCUSDT
+2026-03-19 10:40:22,577 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:40:22,578 [INFO] 127.0.0.1 - - [19/Mar/2026 10:40:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:40:32,591 [INFO] Fetched public price 70780.0 for BTCUSDT
+2026-03-19 10:40:32,593 [INFO] MOCK mode: Returning mock balance 10000.0 USDT
+2026-03-19 10:40:32,593 [INFO] 127.0.0.1 - - [19/Mar/2026 10:40:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:41:11,257 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:41:11,835 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 10:41:21,798 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01}
+2026-03-19 10:41:22,424 [INFO] Order successfully placed. Response: {'orderId': 12873604938, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'm4nbLJGQHOUIw1b8NAh1tX', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.010', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1773897085783}
+2026-03-19 10:42:55,988 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:42:56,575 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 10:42:56,613 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-19 10:42:56,613 [INFO] [33mPress CTRL+C to quit[0m
+2026-03-19 10:42:56,614 [INFO]  * Restarting with stat
+2026-03-19 10:42:57,440 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:42:57,983 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 10:42:58,016 [WARNING]  * Debugger is active!
+2026-03-19 10:42:58,018 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 10:42:58,432 [INFO] 127.0.0.1 - - [19/Mar/2026 10:42:58] "GET / HTTP/1.1" 200 -
+2026-03-19 10:42:59,439 [INFO] Fetched public price 70739.5 for BTCUSDT
+2026-03-19 10:43:00,004 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:00] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:43:09,515 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:43:09,706 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:09] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:43:10,544 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'MARKET', 'quantity': 1000.0}
+2026-03-19 10:43:10,775 [ERROR] Binance API Error: Exceeded the maximum allowable position at current leverage. (Code: -2027)
+2026-03-19 10:43:10,775 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:10] "[31m[1mPOST /api/place_order HTTP/1.1[0m" 400 -
+2026-03-19 10:43:19,439 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:43:19,640 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:19] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:43:27,993 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'MARKET', 'quantity': 0.001}
+2026-03-19 10:43:28,188 [ERROR] Binance API Error: Order's notional must be no smaller than 100 (unless you choose reduce only). (Code: -4164)
+2026-03-19 10:43:28,188 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:28] "[31m[1mPOST /api/place_order HTTP/1.1[0m" 400 -
+2026-03-19 10:43:29,398 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:43:29,588 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:29] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:43:39,448 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:43:39,634 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:39] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:43:49,459 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:43:49,658 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:49] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:43:59,440 [INFO] Fetched public price 70755.3 for BTCUSDT
+2026-03-19 10:43:59,629 [INFO] 127.0.0.1 - - [19/Mar/2026 10:43:59] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:44:09,488 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:44:09,677 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:09] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:44:19,435 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:44:19,625 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:19] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:44:29,492 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:44:29,693 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:29] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:44:39,498 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:44:39,694 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:39] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:44:46,698 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'MARKET', 'quantity': 0.01}
+2026-03-19 10:44:46,936 [INFO] Order successfully placed. Response: {'orderId': 12873642807, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'NzmyLhQmX7cncOqvjukhf0', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.010', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1773897290287}
+2026-03-19 10:44:46,936 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:46] "POST /api/place_order HTTP/1.1" 200 -
+2026-03-19 10:44:47,553 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:44:47,742 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:47] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:44:49,422 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:44:49,606 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:49] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:44:59,472 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:44:59,674 [INFO] 127.0.0.1 - - [19/Mar/2026 10:44:59] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:45:09,613 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:45:09,814 [INFO] 127.0.0.1 - - [19/Mar/2026 10:45:09] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:45:19,577 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:45:19,766 [INFO] 127.0.0.1 - - [19/Mar/2026 10:45:19] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:45:29,647 [INFO] Fetched public price 70755.4 for BTCUSDT
+2026-03-19 10:45:29,843 [INFO] 127.0.0.1 - - [19/Mar/2026 10:45:29] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:45:39,687 [INFO] Fetched public price 70759.4 for BTCUSDT
+2026-03-19 10:45:40,009 [INFO] 127.0.0.1 - - [19/Mar/2026 10:45:40] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:45:49,620 [INFO] Fetched public price 70768.3 for BTCUSDT
+2026-03-19 10:45:49,811 [INFO] 127.0.0.1 - - [19/Mar/2026 10:45:49] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:45:59,571 [INFO] Fetched public price 70769.3 for BTCUSDT
+2026-03-19 10:45:59,763 [INFO] 127.0.0.1 - - [19/Mar/2026 10:45:59] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:46:21,862 [INFO] Fetched public price 70769.2 for BTCUSDT
+2026-03-19 10:46:22,059 [INFO] 127.0.0.1 - - [19/Mar/2026 10:46:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:47:21,693 [INFO] Fetched public price 70782.2 for BTCUSDT
+2026-03-19 10:47:21,886 [INFO] 127.0.0.1 - - [19/Mar/2026 10:47:21] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:48:21,657 [INFO] Fetched public price 70830.2 for BTCUSDT
+2026-03-19 10:48:21,854 [INFO] 127.0.0.1 - - [19/Mar/2026 10:48:21] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:49:29,082 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:49:29,695 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 10:49:29,731 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-19 10:49:29,731 [INFO] [33mPress CTRL+C to quit[0m
+2026-03-19 10:49:29,732 [INFO]  * Restarting with stat
+2026-03-19 10:49:30,502 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:49:31,095 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 10:49:31,128 [WARNING]  * Debugger is active!
+2026-03-19 10:49:31,130 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 10:49:31,534 [INFO] 127.0.0.1 - - [19/Mar/2026 10:49:31] "GET / HTTP/1.1" 200 -
+2026-03-19 10:49:32,497 [INFO] Fetched public price 70836.0 for BTCUSDT
+2026-03-19 10:49:33,062 [INFO] 127.0.0.1 - - [19/Mar/2026 10:49:33] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:49:42,586 [INFO] Fetched public price 70830.0 for BTCUSDT
+2026-03-19 10:49:42,786 [INFO] 127.0.0.1 - - [19/Mar/2026 10:49:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:49:47,089 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'MARKET', 'quantity': 0.01}
+2026-03-19 10:49:47,340 [INFO] Order successfully placed. Response: {'orderId': 12873700571, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'iStWWkMlo6y4yIhR1uep9g', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.010', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1773897590679}
+2026-03-19 10:49:47,341 [INFO] 127.0.0.1 - - [19/Mar/2026 10:49:47] "POST /api/place_order HTTP/1.1" 200 -
+2026-03-19 10:49:47,993 [INFO] Fetched public price 70836.5 for BTCUSDT
+2026-03-19 10:49:48,184 [INFO] 127.0.0.1 - - [19/Mar/2026 10:49:48] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:49:52,551 [INFO] Fetched public price 70836.5 for BTCUSDT
+2026-03-19 10:49:52,745 [INFO] 127.0.0.1 - - [19/Mar/2026 10:49:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:50:02,544 [INFO] Fetched public price 70832.2 for BTCUSDT
+2026-03-19 10:50:02,745 [INFO] 127.0.0.1 - - [19/Mar/2026 10:50:02] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:50:12,569 [INFO] Fetched public price 70832.2 for BTCUSDT
+2026-03-19 10:50:12,755 [INFO] 127.0.0.1 - - [19/Mar/2026 10:50:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:50:22,616 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:50:22,809 [INFO] 127.0.0.1 - - [19/Mar/2026 10:50:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:50:32,599 [INFO] Fetched public price 70836.5 for BTCUSDT
+2026-03-19 10:50:32,790 [INFO] 127.0.0.1 - - [19/Mar/2026 10:50:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:50:42,606 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:50:42,798 [INFO] 127.0.0.1 - - [19/Mar/2026 10:50:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:50:52,602 [INFO] Fetched public price 70836.5 for BTCUSDT
+2026-03-19 10:50:52,791 [INFO] 127.0.0.1 - - [19/Mar/2026 10:50:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:51:09,035 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:51:09,261 [INFO] 127.0.0.1 - - [19/Mar/2026 10:51:09] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:51:12,632 [INFO] Fetched public price 70836.5 for BTCUSDT
+2026-03-19 10:51:12,972 [INFO] 127.0.0.1 - - [19/Mar/2026 10:51:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:51:22,499 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:51:22,684 [INFO] 127.0.0.1 - - [19/Mar/2026 10:51:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:51:32,605 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:51:32,809 [INFO] 127.0.0.1 - - [19/Mar/2026 10:51:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:51:42,625 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:51:42,829 [INFO] 127.0.0.1 - - [19/Mar/2026 10:51:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:51:52,614 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:51:52,804 [INFO] 127.0.0.1 - - [19/Mar/2026 10:51:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:52:02,589 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:52:02,781 [INFO] 127.0.0.1 - - [19/Mar/2026 10:52:02] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:52:12,724 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:52:12,921 [INFO] 127.0.0.1 - - [19/Mar/2026 10:52:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:52:22,498 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:52:22,689 [INFO] 127.0.0.1 - - [19/Mar/2026 10:52:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:52:32,535 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:52:32,723 [INFO] 127.0.0.1 - - [19/Mar/2026 10:52:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:52:42,548 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:52:42,733 [INFO] 127.0.0.1 - - [19/Mar/2026 10:52:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:52:52,554 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:52:52,751 [INFO] 127.0.0.1 - - [19/Mar/2026 10:52:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:53:02,508 [INFO] Fetched public price 70836.5 for BTCUSDT
+2026-03-19 10:53:02,718 [INFO] 127.0.0.1 - - [19/Mar/2026 10:53:02] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:53:12,573 [INFO] Fetched public price 70836.4 for BTCUSDT
+2026-03-19 10:53:12,768 [INFO] 127.0.0.1 - - [19/Mar/2026 10:53:12] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:53:22,563 [INFO] Fetched public price 70828.3 for BTCUSDT
+2026-03-19 10:53:22,756 [INFO] 127.0.0.1 - - [19/Mar/2026 10:53:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:53:32,508 [INFO] Fetched public price 70826.9 for BTCUSDT
+2026-03-19 10:53:32,705 [INFO] 127.0.0.1 - - [19/Mar/2026 10:53:32] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:53:42,668 [INFO] Fetched public price 70826.1 for BTCUSDT
+2026-03-19 10:53:42,913 [INFO] 127.0.0.1 - - [19/Mar/2026 10:53:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:53:52,588 [INFO] Fetched public price 70828.3 for BTCUSDT
+2026-03-19 10:53:52,776 [INFO] 127.0.0.1 - - [19/Mar/2026 10:53:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:53:59,602 [INFO]  * Detected change in 'D:\\prime\\trading_bot\\bot\\orders.py', reloading
+2026-03-19 10:53:59,766 [INFO]  * Restarting with stat
+2026-03-19 10:54:00,582 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:54:01,184 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 10:54:01,212 [WARNING]  * Debugger is active!
+2026-03-19 10:54:01,215 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 10:54:01,950 [INFO]  * Detected change in 'D:\\prime\\trading_bot\\bot\\__init__.py', reloading
+2026-03-19 10:54:02,051 [INFO]  * Restarting with stat
+2026-03-19 10:54:02,825 [INFO] Logging configured. Writing to trading.log
+2026-03-19 10:54:03,410 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 10:54:03,439 [WARNING]  * Debugger is active!
+2026-03-19 10:54:03,441 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 10:54:12,842 [INFO] Fetched public price 70820.0 for BTCUSDT
+2026-03-19 10:54:13,508 [INFO] 127.0.0.1 - - [19/Mar/2026 10:54:13] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:54:22,616 [INFO] Fetched public price 70819.4 for BTCUSDT
+2026-03-19 10:54:22,803 [INFO] 127.0.0.1 - - [19/Mar/2026 10:54:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 10:54:25,059 [INFO]  * Detected change in 'D:\\prime\\trading_bot\\app.py', reloading
+2026-03-19 10:54:25,186 [INFO]  * Restarting with stat
+2026-03-19 12:45:34,303 [INFO] Logging configured. Writing to trading.log
+2026-03-19 12:45:36,140 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 12:45:36,192 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-19 12:45:36,192 [INFO] [33mPress CTRL+C to quit[0m
+2026-03-19 12:45:36,193 [INFO]  * Restarting with stat
+2026-03-19 12:45:36,949 [INFO] Logging configured. Writing to trading.log
+2026-03-19 12:45:38,040 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 12:45:38,070 [WARNING]  * Debugger is active!
+2026-03-19 12:45:38,073 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 12:45:38,998 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:38] "GET / HTTP/1.1" 200 -
+2026-03-19 12:45:39,001 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:39] "GET / HTTP/1.1" 200 -
+2026-03-19 12:45:42,669 [INFO] Fetched public price 70090.3 for BTCUSDT
+2026-03-19 12:45:43,749 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:43] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:45:44,181 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:44] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:45:50,575 [INFO] Fetched public price 70088.6 for BTCUSDT
+2026-03-19 12:45:50,914 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:50] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:45:51,264 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:51] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:45:57,015 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'MARKET', 'quantity': 0.1}
+2026-03-19 12:45:57,287 [INFO] Order successfully placed. Response: {'orderId': 12875137469, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'letqCvdiRAMOGhEH9tzcsj', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.100', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1773904560121}
+2026-03-19 12:45:57,288 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:57] "POST /api/place_order HTTP/1.1" 200 -
+2026-03-19 12:45:58,904 [INFO] Fetched public price 70084.9 for BTCUSDT
+2026-03-19 12:45:59,277 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:59] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:45:59,628 [INFO] 127.0.0.1 - - [19/Mar/2026 12:45:59] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:01,123 [INFO] Fetched public price 70084.9 for BTCUSDT
+2026-03-19 12:46:01,482 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:01] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:02,318 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:02] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:16,636 [ERROR] Error fetching public price for BTCUSDT: HTTPSConnectionPool(host='testnet.binancefuture.com', port=443): Read timed out. (read timeout=5)
+2026-03-19 12:46:17,036 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:17] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:17,359 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:17] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:21,304 [INFO] Fetched public price 70082.0 for BTCUSDT
+2026-03-19 12:46:21,658 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:21] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:22,015 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:22] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:26,045 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:26] "GET / HTTP/1.1" 200 -
+2026-03-19 12:46:28,303 [INFO] Fetched public price 70080.9 for BTCUSDT
+2026-03-19 12:46:28,607 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:28] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:28,829 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:28] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:37,349 [INFO] Fetched public price 70077.9 for BTCUSDT
+2026-03-19 12:46:37,628 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:37] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:37,946 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:37] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:49,204 [INFO] Fetched public price 70026.7 for BTCUSDT
+2026-03-19 12:46:50,444 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:50] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:50,693 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:50] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:57,728 [INFO] Fetched public price 70014.9 for BTCUSDT
+2026-03-19 12:46:58,124 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:58] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:46:58,459 [INFO] 127.0.0.1 - - [19/Mar/2026 12:46:58] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:07,478 [INFO] Fetched public price 70000.0 for BTCUSDT
+2026-03-19 12:47:07,813 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:07] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:08,061 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:08] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:18,323 [INFO] Fetched public price 69998.5 for BTCUSDT
+2026-03-19 12:47:18,566 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:18] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:18,806 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:18] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:28,616 [INFO] Fetched public price 69998.5 for BTCUSDT
+2026-03-19 12:47:29,127 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:29] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:29,423 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:29] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:37,762 [INFO] Fetched public price 69998.6 for BTCUSDT
+2026-03-19 12:47:38,164 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:38] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:38,662 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:38] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:48,396 [INFO] Fetched public price 70019.6 for BTCUSDT
+2026-03-19 12:47:48,602 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:48] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:48,800 [INFO] 127.0.0.1 - - [19/Mar/2026 12:47:48] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:47:53,987 [INFO]  * Detected change in 'D:\\prime\\trading_bot\\bot\\orders.py', reloading
+2026-03-19 12:47:54,113 [INFO]  * Restarting with stat
+2026-03-19 12:47:54,882 [INFO] Logging configured. Writing to trading.log
+2026-03-19 12:47:56,961 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 12:47:56,991 [WARNING]  * Debugger is active!
+2026-03-19 12:47:56,993 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 12:48:02,395 [INFO] Fetched public price 70019.6 for BTCUSDT
+2026-03-19 12:48:03,477 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:03] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:03,880 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:03] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:08,426 [INFO] Fetched public price 69997.9 for BTCUSDT
+2026-03-19 12:48:08,750 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:08] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:09,095 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:09] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:17,281 [INFO] Fetched public price 69996.8 for BTCUSDT
+2026-03-19 12:48:17,586 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:17] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:17,734 [INFO]  * Detected change in 'D:\\prime\\trading_bot\\app.py', reloading
+2026-03-19 12:48:17,824 [INFO]  * Restarting with stat
+2026-03-19 12:48:18,602 [INFO] Logging configured. Writing to trading.log
+2026-03-19 12:48:19,755 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 12:48:19,788 [WARNING]  * Debugger is active!
+2026-03-19 12:48:19,791 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 12:48:27,375 [INFO] Fetched public price 70119.3 for BTCUSDT
+2026-03-19 12:48:28,742 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:28] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:29,024 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:29] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:37,798 [INFO] Fetched public price 70119.3 for BTCUSDT
+2026-03-19 12:48:38,162 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:38] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:38,498 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:38] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:47,093 [INFO] Fetched public price 69990.2 for BTCUSDT
+2026-03-19 12:48:47,278 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:47] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:47,469 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:47] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:58,045 [INFO] Fetched public price 69990.2 for BTCUSDT
+2026-03-19 12:48:58,335 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:58] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:48:58,552 [INFO] 127.0.0.1 - - [19/Mar/2026 12:48:58] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:49:08,445 [INFO] Fetched public price 69990.0 for BTCUSDT
+2026-03-19 12:49:08,797 [INFO] 127.0.0.1 - - [19/Mar/2026 12:49:08] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:49:09,022 [INFO] 127.0.0.1 - - [19/Mar/2026 12:49:09] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:49:17,865 [INFO] Fetched public price 70094.3 for BTCUSDT
+2026-03-19 12:49:18,106 [INFO] 127.0.0.1 - - [19/Mar/2026 12:49:18] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 12:49:18,416 [INFO] 127.0.0.1 - - [19/Mar/2026 12:49:18] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:30,656 [INFO] Logging configured. Writing to trading.log
+2026-03-19 13:11:31,722 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 13:11:32,103 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-19 13:11:32,103 [INFO] [33mPress CTRL+C to quit[0m
+2026-03-19 13:11:32,107 [INFO]  * Restarting with stat
+2026-03-19 13:11:34,188 [INFO] Logging configured. Writing to trading.log
+2026-03-19 13:11:35,069 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 13:11:35,147 [WARNING]  * Debugger is active!
+2026-03-19 13:11:35,154 [INFO]  * Debugger PIN: 185-781-163
+2026-03-19 13:11:36,647 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:36] "GET / HTTP/1.1" 200 -
+2026-03-19 13:11:37,433 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-19 13:11:38,332 [INFO] Fetched public price 70354.6 for BTCUSDT
+2026-03-19 13:11:39,559 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:39] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:39,737 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:39] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:40,633 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:40] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:47,471 [INFO] Requesting order placement: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'MARKET', 'quantity': 0.1}
+2026-03-19 13:11:47,672 [INFO] Order successfully placed. Response: {'orderId': 12875487065, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'A3cuja174NE4TwdcrGSbIP', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.100', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1773906110303}
+2026-03-19 13:11:47,673 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:47] "POST /api/place_order HTTP/1.1" 200 -
+2026-03-19 13:11:48,414 [INFO] Fetched public price 70092.9 for BTCUSDT
+2026-03-19 13:11:48,587 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:48] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:48,761 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:48] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:48,787 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:48] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:49,705 [INFO] Fetched public price 70303.1 for BTCUSDT
+2026-03-19 13:11:49,874 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:49] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:50,048 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:50] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:50,327 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:50] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:57,366 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:57] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:58,425 [INFO] Fetched public price 70119.9 for BTCUSDT
+2026-03-19 13:11:58,595 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:58] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:58,775 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:58] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:58,790 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:58] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:11:59,056 [INFO] 127.0.0.1 - - [19/Mar/2026 13:11:59] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:08,488 [INFO] Fetched public price 70249.8 for BTCUSDT
+2026-03-19 13:12:08,660 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:08] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:08,838 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:08] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:08,856 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:08] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:18,336 [INFO] Fetched public price 70392.3 for BTCUSDT
+2026-03-19 13:12:18,507 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:18] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:18,691 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:18] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:18,708 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:18] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:28,430 [INFO] Fetched public price 70382.0 for BTCUSDT
+2026-03-19 13:12:28,621 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:28] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:28,801 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:28] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:28,829 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:28] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:38,603 [INFO] Fetched public price 70212.9 for BTCUSDT
+2026-03-19 13:12:38,785 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:38] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:38,961 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:38] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:38,987 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:38] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:48,749 [INFO] Fetched public price 70382.0 for BTCUSDT
+2026-03-19 13:12:48,929 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:48] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:49,106 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:49] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:49,116 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:49] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:58,490 [INFO] Fetched public price 70000.0 for BTCUSDT
+2026-03-19 13:12:58,668 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:58] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:58,851 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:58] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:12:58,873 [INFO] 127.0.0.1 - - [19/Mar/2026 13:12:58] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:08,494 [INFO] Fetched public price 70000.0 for BTCUSDT
+2026-03-19 13:13:08,678 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:08] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:08,858 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:08] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:08,875 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:08] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:19,064 [INFO] Fetched public price 69958.4 for BTCUSDT
+2026-03-19 13:13:19,232 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:19] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:19,419 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:19] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:19,444 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:19] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:28,476 [INFO] Fetched public price 70000.0 for BTCUSDT
+2026-03-19 13:13:28,655 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:28] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:28,833 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:28] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:28,867 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:28] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:38,490 [INFO] Fetched public price 70095.1 for BTCUSDT
+2026-03-19 13:13:38,657 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:38] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:38,835 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:38] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:38,853 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:38] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:48,969 [INFO] Fetched public price 70095.4 for BTCUSDT
+2026-03-19 13:13:49,143 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:49] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:49,316 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:49] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:49,336 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:49] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:59,043 [INFO] Fetched public price 70096.1 for BTCUSDT
+2026-03-19 13:13:59,211 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:59] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:59,419 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:59] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:13:59,447 [INFO] 127.0.0.1 - - [19/Mar/2026 13:13:59] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:09,063 [INFO] Fetched public price 70096.3 for BTCUSDT
+2026-03-19 13:14:09,235 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:09] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:09,408 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:09] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:09,423 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:09] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:19,055 [INFO] Fetched public price 70096.1 for BTCUSDT
+2026-03-19 13:14:19,260 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:19] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:19,461 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:19] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:19,474 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:19] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:29,000 [INFO] Fetched public price 70096.1 for BTCUSDT
+2026-03-19 13:14:29,173 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:29] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:29,346 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:29] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:29,374 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:29] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:38,993 [INFO] Fetched public price 70096.3 for BTCUSDT
+2026-03-19 13:14:39,183 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:39] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:39,356 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:39] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:14:39,632 [INFO] 127.0.0.1 - - [19/Mar/2026 13:14:39] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:15:22,106 [INFO] Fetched public price 70096.1 for BTCUSDT
+2026-03-19 13:15:22,291 [INFO] 127.0.0.1 - - [19/Mar/2026 13:15:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:15:22,466 [INFO] 127.0.0.1 - - [19/Mar/2026 13:15:22] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:15:22,492 [INFO] 127.0.0.1 - - [19/Mar/2026 13:15:22] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:22,435 [INFO] Fetched public price 70056.2 for BTCUSDT
+2026-03-19 13:16:22,617 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:22] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:22,797 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:22] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:22,824 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:22] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:39,740 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:39] "GET / HTTP/1.1" 200 -
+2026-03-19 13:16:41,852 [INFO] Fetched public price 70056.3 for BTCUSDT
+2026-03-19 13:16:42,054 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:42] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:42,233 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:42] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:42,265 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:42] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:46,514 [INFO] Closed position for BTCUSDT. Response: {'orderId': 12875552171, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'nk3u2KjfmcFavnddUoesYP', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.100', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': True, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1773906409127}
+2026-03-19 13:16:46,515 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:46] "POST /api/close_position HTTP/1.1" 200 -
+2026-03-19 13:16:47,659 [INFO] Fetched public price 69995.9 for BTCUSDT
+2026-03-19 13:16:47,832 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:47] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:48,027 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:48] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:48,040 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:48] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:51,882 [INFO] Fetched public price 69995.9 for BTCUSDT
+2026-03-19 13:16:52,050 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:52] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:52,298 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:52] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:16:52,311 [INFO] 127.0.0.1 - - [19/Mar/2026 13:16:52] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:17:01,780 [INFO] Fetched public price 69995.9 for BTCUSDT
+2026-03-19 13:17:01,961 [INFO] 127.0.0.1 - - [19/Mar/2026 13:17:01] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:17:02,155 [INFO] 127.0.0.1 - - [19/Mar/2026 13:17:02] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:17:02,179 [INFO] 127.0.0.1 - - [19/Mar/2026 13:17:02] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:17:11,779 [INFO] Fetched public price 69996.0 for BTCUSDT
+2026-03-19 13:17:11,964 [INFO] 127.0.0.1 - - [19/Mar/2026 13:17:11] "GET /api/market_data?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:17:12,280 [INFO] 127.0.0.1 - - [19/Mar/2026 13:17:12] "GET /api/open_orders?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:17:12,303 [INFO] 127.0.0.1 - - [19/Mar/2026 13:17:12] "GET /api/positions?symbol=BTCUSDT HTTP/1.1" 200 -
+2026-03-19 13:17:19,024 [INFO]  * Detected change in 'D:\\prime\\trading_bot\\bot\\logging_config.py', reloading
+2026-03-19 13:17:19,239 [INFO]  * Restarting with stat
+2026-03-19 13:17:21,371 [INFO] Logging configured. Separated logs built.
+2026-03-19 13:17:22,527 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 13:17:25,174 [INFO] Fetched public price 69989.2 for BTCUSDT
+2026-03-19 13:17:25,203 [INFO] Fetched public price 69989.2 for BTCUSDT
+2026-03-19 13:17:31,735 [INFO] Fetched public price 69993.5 for BTCUSDT
+2026-03-19 13:17:41,754 [INFO] Fetched public price 69996.9 for BTCUSDT
+2026-03-19 13:17:51,761 [INFO] Fetched public price 69996.8 for BTCUSDT
+2026-03-19 13:18:01,862 [INFO] Fetched public price 69996.0 for BTCUSDT
+2026-03-19 13:18:03,752 [INFO]  * Restarting with stat
+2026-03-19 13:18:05,811 [INFO] Logging configured. Separated logs built.
+2026-03-19 13:18:06,739 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 13:18:11,742 [INFO] Fetched public price 69997.0 for BTCUSDT
+2026-03-19 13:18:21,857 [INFO] Fetched public price 69989.2 for BTCUSDT
+2026-03-19 13:18:22,136 [INFO] Fetched public price 69989.2 for BTCUSDT
+2026-03-19 13:18:24,318 [INFO]  * Restarting with stat
+2026-03-19 13:18:26,397 [INFO] Logging configured. Separated logs built.
+2026-03-19 13:18:27,489 [INFO] Binance Client initialized. MOCK mode: False
+2026-03-19 13:18:31,708 [INFO] Fetched public price 69993.8 for BTCUSDT
+2026-03-19 13:18:41,764 [INFO] Fetched public price 69993.6 for BTCUSDT
+2026-03-19 13:18:51,764 [INFO] Fetched public price 69992.1 for BTCUSDT
+2026-03-19 13:19:01,810 [INFO] Fetched public price 69997.1 for BTCUSDT
+2026-03-19 13:19:12,154 [INFO] Fetched public price 69997.0 for BTCUSDT
+2026-03-19 13:19:21,861 [INFO] Fetched public price 69992.1 for BTCUSDT
+2026-03-19 13:19:22,392 [INFO] Fetched public price 69995.0 for BTCUSDT
