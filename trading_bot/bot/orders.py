@@ -67,6 +67,10 @@ def place_order(symbol: str, side: str, order_type: str, quantity: float, price:
             'type': order_type,
             'quantity': quantity,
         }
+
+        if order_type == "LIMIT":
+            params['price'] = price
+            params['timeInForce'] = 'GTC'
         
         req_logger.info(f"REQ [place_order]: {params}")
 
